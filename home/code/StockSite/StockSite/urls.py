@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls'), name='allauth'),
+    url(r'^robinhood/', include('robinhood.urls'), name='robinhood'),
     url(r'', include('dashboard.urls'))
 ]

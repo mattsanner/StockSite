@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'dashboard.apps.DashboardConfig',
+    'robinhood.apps.RobinhoodConfig',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
