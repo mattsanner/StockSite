@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # ... include the providers you want to enable:
-    'allauth.socialaccount.providers.robinhood',
+    #'allauth.socialaccount.providers.robinhood',
     #'allauth.socialaccount.providers.facebook'
 ]
 
@@ -144,3 +145,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/home/code/StockSite/dashboard/static/',
+)
