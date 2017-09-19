@@ -36,7 +36,9 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
+            {% if request.user.robinhooduser.exists == false %}
+            <li><a href="/robinhood/registration/">Register for Robinhood</a></li>
+            {% endif %}
             <li><a href="{% url "account_logout" %}">Log Out</a></li>
             <li><a href="#">Help</a></li>
           </ul>
