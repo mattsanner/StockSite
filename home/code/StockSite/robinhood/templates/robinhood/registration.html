@@ -21,7 +21,10 @@
 
   <body>
     <div class="container">
-      <form class="form-signin" action="/robinhood/register" method="POST">{% csrf_token %}
+      <form class="form-signin" action="/robinhood/registration" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <!--
         <h2 class="form-signin-heading">Enter your Robinhood information to link your accounts</h2>
         <label for="inputEmail" class="sr-only">Username/Email Address</label>
         <input type="username" id="inputEmail" name="username" class="form-control" placeholder="Email/User" required autofocus>
@@ -31,7 +34,7 @@
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
-        </div>
+        </div> -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
     </div> <!-- /container -->

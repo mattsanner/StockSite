@@ -4,25 +4,25 @@ import requests
 from .models import RobinhoodUser
 
 class RobinhoodServices():
-
     def authenticate(user, username, password):
-        if(user.robinhooduser == username):
-            r = requests.post('https://api.robinhood.com/api-token-auth/', {"username": username, "password": password})
-            data = r.json()
-            if 'token' in data.keys():
-                user = RobinhoodUser.objects.filter(username=username)            
-                user.token = data['token']
-            else:
-                raise NotImplementedError()   #TODO log an error and possibly an error code/value in this case
-        else:            
-            raise NotImplementedError()   #TODO log an error and possibly return error code/value in this case
+        r = requests.post('https://api.robinhood.com/api-token-auth/', {"username": username, "password": password})
+        data = r.json()
+        if 'token' in data.keys():
+            rh_user = RobinhoodUser(user=user, username=username, token=data['token'])
+            rh_user.save()
+            return True
+        else:
+            return False   #TODO log an error and possibly an error code/value in this case
 
     def register(user, username, password):           
-        if user.robinhooduser.exists or user.robinhooduser != username:
-            return False
-        user.robinhooduser.username = username
-        user.save()
-        RobinhoodServices.authenticate(user, username, password)   
+        """if user.robinhooduser.exists:
+            raise LookupError("User already has Robinhood user. Only allowed to register account once currently.")
+            return False"""
+        if RobinhoodServices.authenticate(user, username, password):
+            user.robinhooduser.username = username
+            user.save()
+        else:
+            raise Exception("An error occured while authenticating or saving robinhooduser data to user")
         
     def get_stocks(username):
         r = requests

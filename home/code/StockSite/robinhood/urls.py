@@ -6,5 +6,5 @@ app_name = 'polls'
 urlpatterns = [
     url(r'^signin', views.robinhoodsignin),
     url(r'^registration', views.registration),
-    url(r'^register', views.register)
+    #url(r'^register', views.register)
 ]
